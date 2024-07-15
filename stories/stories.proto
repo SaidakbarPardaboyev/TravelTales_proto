@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+option go_package = "genproto/stories";
+
+package stories;
+
+service Stories {
+    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
+    rpc EditStory(requestEditStory) returns (responseEditStory);
+    rpc DeleteStory(requestDeleteStory) returns (responseDeleteStory);
+    rpc GetStories(requestGetStories) returns (responseGetStories);
+    rpc GetStoryFullInfo(requestGetStoryFullInfo) returns (responseGetStoryFullInfo);
+    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
+    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
+    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
+    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
+
+}
+
+message requestCreateStory {
+    string title = 1;
+    string content = 2;
+    string location = 3;
+    repeated string tags = 4;
+    repeated string images = 5;
+}
+
+message responseCreateStory {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    string location = 4;
+    repeated string tags = 5;
+    string author_id = 6;
+    string created_at = 7;
+}
+
+message requestEditStory {
+    string title = 1;
+    string content = 2;
+    string location = 3;
+    repeated string tags = 4;
+    repeated string images = 5;
+}
+
+message responseEditStory {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    string location = 4;
+    repeated string tags = 5;
+    string author_id = 6;
+    string updated_at = 7;
+}
+
+message requestDeleteStory {
+    string author_id = 1;
+    string story_id = 2;
+}
+
+message responseDeleteStory {
+    string message = 1;
+}
+
+message requestGetStories {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message author {
+    string id = 1;
+    string username = 2;
+}
+
+message storyForGet {
+    string id = 1;
+    string title = 2;
+    author author = 3;
+    string location = 4;
+    int64 likes_count = 5;
+    int64 comments_count = 6;
+    string created_at = 7;
+}
+
+message responseGetStories {
+    repeated storyForGet stories = 1;
+    int64 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message requestGetStoryFullInfo {
+    string id = 1;
+}
+
+message authorForGetStoryFullInfo {
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
+}
+
+message responseGetStoryFullInfo {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+    string location = 4;
+    repeated string tags = 5;
+    authorForGetStoryFullInfo author = 6;
+    int64 likes_count = 7;
+    int64 comments_count = 8;
+    string created_at = 9;
+    string updated_at = 10;
+}
