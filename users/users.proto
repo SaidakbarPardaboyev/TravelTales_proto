@@ -19,9 +19,8 @@ service Users {
     rpc GetUserStatistic(requestGetUserStatistic) returns (responseGetUserStatistic);
     rpc Follow(requestFollow) returns (responseFollow);
     rpc GetFollowers(requestGetFollowers) returns (responseGetFollowers);
+    rpc ValidateUser(requestGetProfile) returns (Status);
 }
-
-// --------------------------------------------------
 
 message requestGetProfile {
     string id = 1;
@@ -131,6 +130,9 @@ message responseGetFollowers{
     int64 total = 2;
     int32 page = 3;
     int32 limit = 4;
+}
+message Status {
+    bool Success = 1;
 }
 
 // message requestRegister {
