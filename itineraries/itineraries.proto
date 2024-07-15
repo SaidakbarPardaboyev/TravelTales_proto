@@ -1,0 +1,231 @@
+syntax = "proto3";
+
+option go_package = "genproto/itineraries";
+
+package itineraries;
+
+service itineraries {
+    rpc CreateItineraries(requestCreateItineraries) returns (responseCreateItineraries);
+    rpc EditItineraries(requestEditItineraries) returns (responseEditItineraries);
+    rpc DeleteItineraries(requestDeleteItineraries) returns (responseDeleteItineraries);
+    rpc GetAllItineraries(requestGetAllItineraries) returns (responseGetAllItineraries);
+    rpc GetItineraryFullInfo(requestGetItineraryFullInfo) returns (responseGetItineraryFullInfo);
+    rpc WriteCommentToItinerary(requestWriteCommentToItinerary) returns (responseWriteCommentToItinerary);
+    rpc GetDestinations(requestGetDestinations) returns (responseGetDestinations);
+    rpc GetDestinationsAllInfo(requestGetDestinationsAllInfo) returns (responseGetDestinationsAllInfo);
+    rpc WriteMessages(requestWriteMessages) returns (responseWriteMessages);
+    rpc GetMessages(requestGetMessages) returns (responseGetMessages);
+    rpc GetUserStatistic(requestGetUserStatistic) returns (responseGetUserStatistic);
+    
+}
+
+message destination {
+    string name = 1;
+    string start_date = 2;
+    string end_date = 3;
+    repeated string activities = 4;
+}
+
+message requestCreateItineraries {
+    string auther_id = 1;
+    string title = 2;
+    string description = 3;
+    string start_date = 4;
+    string end_date = 5;
+    repeated destination destinations = 6;
+}
+
+message responseCreateItineraries {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string start_date = 4;
+    string end_date = 5;
+    string author_id = 6;
+    string created_at = 7;
+}
+
+message requestEditItineraries {
+    string auther_id = 1;
+    string title = 2;
+    string description = 3;
+    string start_date = 4;
+    string end_date = 5;
+    repeated destination destinations = 6;
+}
+
+message responseEditItineraries {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string start_date = 4;
+    string end_date = 5;
+    string author_id = 6;
+    string updated_at = 7;
+}
+
+message requestDeleteItineraries {
+    string id = 1;
+}
+
+message responseDeleteItineraries {
+    string message = 1;
+}
+
+message requestGetAllItineraries {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message author {
+    string id = 1;
+    string username = 2;
+}
+
+message itinerary {
+    string id = 1;
+    string title = 2;
+    author auther = 3;
+    string start_date = 4;
+    string end_date = 5;
+    int64 likes_count = 6;
+    int64 comments_count = 7;
+    string created_at = 8;
+}
+
+message responseGetAllItineraries {
+    repeated itinerary itineraries = 1;
+    int64 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message requestGetItineraryFullInfo {
+    string id = 1;
+}
+
+message responseGetItineraryFullInfo {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    string start_date = 4;
+    string end_date = 5;
+    author author = 6;
+    repeated destination destinations = 7;
+    int64 likes_count = 8;
+    int64 comments_count = 9;
+    string created_at = 10;
+    string updated_at = 11;
+}
+
+message requestWriteCommentToItinerary {
+    string author_id = 1;
+    string itinerary_id = 2;
+    string content = 3;
+}
+
+message responseWriteCommentToItinerary {
+    string id = 1;
+    string content = 2;
+    string author_id = 3;
+    string itinerary_id = 4;
+    string created_at = 5;
+}
+
+message requestGetDestinations {
+    string name = 1;
+    int32 page = 2;
+    int32 limit = 3;
+}
+
+message destionationInfo {
+    string id = 1;
+    string name = 2;
+    string country = 3;
+    string description = 4;
+    repeated string popular_activities = 5;
+}
+
+message responseGetDestinations {
+    repeated destionationInfo destinations = 1;
+    int64 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message requestGetDestinationsAllInfo {
+    string destination_id = 1;
+}
+
+message responseGetDestinationsAllInfo {
+    string id = 1;
+    string name = 2;
+    string country = 3;
+    string description = 4;
+    repeated string popular_activities = 5;
+    string best_time_to_visit = 6; 
+    int32 average_cost_per_day = 7;
+    string currency = 8;
+    string language = 9;
+}
+
+message requestWriteMessages {
+    string sender_id = 1;
+    string recipient_id = 2;
+    string content = 3;
+}
+
+message responseWriteMessages {
+    string id = 1;
+    string sender_id = 2;
+    string recipient_id = 3;
+    string content = 4;
+    string created_at = 5;
+}
+
+message message {
+    string id = 1;
+    author sender = 2;
+    author recipient = 3;
+    string content = 4;
+    string created_at = 5;
+}
+
+message requestGetMessages {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message responseGetMessages {
+    repeated message messages = 1;
+    int64 total = 2;
+    int32 page = 3;
+    int32 limit = 4;
+}
+
+message requestGetUserStatistic {
+    string user_id = 1;
+}
+
+message popularStoriy {
+    string id = 1;
+    string title = 2;
+    int64 likes_count = 3;
+}
+
+message popularItinerary {
+    string id = 1;
+    string title = 2;
+    int64 likes_count = 3;
+}
+
+message responseGetUserStatistic {
+    string user_id = 1;
+    int64 total_stories = 2;
+    int64 total_itineraries = 3;
+    int64 total_countries_visited = 4;
+    int64 total_likes_received = 5;
+    int64 total_comments_received = 6;
+    popularStoriy most_popular_story = 7;
+    popularItinerary most_popular_itinerary = 8;
+}
