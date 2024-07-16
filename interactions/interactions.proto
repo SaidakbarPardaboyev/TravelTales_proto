@@ -13,6 +13,7 @@ service interactions {
 message requestCreateComment {
     string story_id = 1;
     string content = 2;
+    string author_id = 3;
 }
 
 message responseCreateComment {
