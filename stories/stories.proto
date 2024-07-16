@@ -13,11 +13,12 @@ service Stories {
 }
 
 message requestCreateStory {
-    string title = 1;
-    string content = 2;
-    string location = 3;
-    repeated string tags = 4;
-    repeated string images = 5;
+    string author_id = 1;
+    string title = 2;
+    string content = 3;
+    string location = 4;
+    repeated string tags = 5;
+    repeated string images = 6;
 }
 
 message responseCreateStory {
