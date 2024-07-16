@@ -51,7 +51,6 @@ message responseEditStory {
 }
 
 message requestDeleteStory {
-    string author_id = 1;
     string story_id = 2;
 }
 
@@ -74,8 +73,8 @@ message storyForGet {
     string title = 2;
     author author = 3;
     string location = 4;
-    int64 likes_count = 5;
-    int64 comments_count = 6;
+    int64  likes_count = 5;
+    int64  comments_count = 6;
     string created_at = 7;
 }
 
