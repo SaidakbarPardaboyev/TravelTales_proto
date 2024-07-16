@@ -8,10 +8,6 @@ service interactions {
     rpc CreateComment(requestCreateComment) returns (responseCreateComment);
     rpc GetComments(requestGetComments) returns (responseGetComments);
     rpc LikeStory(requestLikeStory) returns (responseLikeStory);
-    rpc CreateComment(requestCreateComment) returns (responseCreateComment);
-    rpc CreateComment(requestCreateComment) returns (responseCreateComment);
-    rpc CreateComment(requestCreateComment) returns (responseCreateComment);
-    rpc CreateComment(requestCreateComment) returns (responseCreateComment);
 }
 
 message requestCreateComment {

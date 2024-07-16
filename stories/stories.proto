@@ -10,11 +10,6 @@ service Stories {
     rpc DeleteStory(requestDeleteStory) returns (responseDeleteStory);
     rpc GetStories(requestGetStories) returns (responseGetStories);
     rpc GetStoryFullInfo(requestGetStoryFullInfo) returns (responseGetStoryFullInfo);
-    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
-    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
-    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
-    rpc CreateStory(requestCreateStory) returns (responseCreateStory);
-
 }
 
 message requestCreateStory {

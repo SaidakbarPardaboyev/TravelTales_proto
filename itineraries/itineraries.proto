@@ -16,7 +16,6 @@ service itineraries {
     rpc WriteMessages(requestWriteMessages) returns (responseWriteMessages);
     rpc GetMessages(requestGetMessages) returns (responseGetMessages);
     rpc GetUserStatistic(requestGetUserStatistic) returns (responseGetUserStatistic);
-    
 }
 
 message destination {
