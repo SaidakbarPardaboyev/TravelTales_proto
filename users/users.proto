@@ -20,6 +20,8 @@ service Users {
     rpc Follow(requestFollow) returns (responseFollow);
     rpc GetFollowers(requestGetFollowers) returns (responseGetFollowers);
     rpc ValidateUser(requestGetProfile) returns (Status);
+    rpc GetAuthorInfo(requestGetAuthorInfo) returns (responseGetAuthorInfo);
+    
 }
 
 message requestGetProfile {
@@ -134,6 +136,16 @@ message responseGetFollowers{
 }
 message Status {
     bool Success = 1;
+}
+
+message requestGetAuthorInfo {
+    string id = 1;
+}
+
+message responseGetAuthorInfo {
+    string id = 1;
+    string username = 2;
+    string full_name = 3;
 }
 
 // message requestRegister {
