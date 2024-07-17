@@ -101,8 +101,8 @@ message itinerary {
     author auther = 3;
     string start_date = 4;
     string end_date = 5;
-    int64 likes_count = 6;
-    int64 comments_count = 7;
+    int64  likes_count = 6;
+    int64  comments_count = 7;
     string created_at = 8;
 }
 
@@ -124,7 +124,7 @@ message responseGetItineraryFullInfo {
     string start_date = 4;
     string end_date = 5;
     author author = 6;
-    repeated destination destinations = 7;
+    repeated destinationEdit destinations = 7;
     int64 likes_count = 8;
     int64 comments_count = 9;
     string created_at = 10;
