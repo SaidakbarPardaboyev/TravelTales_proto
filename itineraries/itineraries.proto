@@ -172,7 +172,7 @@ message responseWriteCommentToItinerary {
 }
 
 message requestGetDestinations {
-    string page = 1;
+    int32 page = 1;
     int32 limit = 2;
 }
 
@@ -181,7 +181,6 @@ message destionationInfo {
     string name = 2;
     string country = 3;
     string description = 4;
-    repeated string popular_activities = 5;
 }
 
 message responseGetDestinations {
